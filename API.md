@@ -10,6 +10,11 @@
 
     curl -XPOST -v -H 'Content-Type: application/json' http://localhost:3000/api/v1/sign_in -d '{"sign_in": {"email": "email@example.com", "password": "admin1"}}'
 
+### sign_out
+
+    curl -XDELETE -v -H 'AUTH-TOKEN: rGLxNkWxYs9rCzxzHP2E' -H 'Content-Type: application/json' http://localhost:3000/api/v1/sign_out
+
+
 
 
 
