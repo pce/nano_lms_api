@@ -5,17 +5,9 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   def create
     user = User.new user_params
     if user.save
-      render json: {
-          messages: "Success",
-          is_success: true,
-          data: user
-          }, status: :ok
-      else
-          render json: {
-            messages: "Success",
-            is_success: false,
-        data: {}
-      }, status: :unprocessable_entity
+      render_json "Success", true, {user: user}, :ok
+    else
+      render_json "Error: %s" % [user.errors.full_messages], false, {}, :unprocessable_entity
     end
   end
 
@@ -25,12 +17,9 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
   end
 
   def ensure_params_exists
-    return  if params[:user].present?
-    render json: {
-      messages: "Missing params",
-      is_success: false,
-      data: {}
-    }, status: :bad_request
+    return if params[:user].present?
+    render_json "Missing params", false, {}, :bad_request
   end
+
 
 end
