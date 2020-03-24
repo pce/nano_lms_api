@@ -1,6 +1,6 @@
 class Api::V1::EventsController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update]
-  before_action :find_event, only: [:show, :update]
+  before_action :find_event, only: [:show, :update, :destroy]
 
   def index
     @events = Event.all
@@ -29,6 +29,17 @@ class Api::V1::EventsController < ApplicationController
     # if can_update @event.user
     if @event.update event_params
       render_json "Success", true, {event: @event}, :ok
+    else
+      render_json "Error", true, {}, :unprocessable_entity
+    end
+    # else
+    # render_json "Error", true, {}, :unauthorized
+  end
+
+  def destroy
+    # if can_update @event.user
+    if @event.destroy
+      render_json "Success", true, {}, :ok
     else
       render_json "Error", true, {}, :unprocessable_entity
     end
