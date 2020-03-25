@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   namespace :api, defaults: {format: :json} do
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
       end
 
       resources :events #, only: [:index, :show]
+      resources :courses #, only: [:index, :show]
 
     end
   end
