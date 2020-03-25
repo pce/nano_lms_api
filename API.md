@@ -23,6 +23,7 @@
          -H 'Content-Type: application/json' \
          -H "AUTH-TOKEN: <your_token>"
 
+
 ### Read event:
 
     curl http://localhost:3000/api/v1/events -X GET \
@@ -30,15 +31,45 @@
 
 ### Update event:
 
-    curl -d '{"start":"2019-09-10 12:00","end":"2019-09-10 13:00","title":"test123a","room":"ABC"}'  http://localhost:5050/api/v1/events/4 -X PUT \
+    curl -d '{"start":"2019-09-10 12:00","end":"2019-09-10 13:00","title":"test123a","room":"ABC"}'  http://localhost:3000/api/v1/events/1 -X PUT \
          -H 'Content-Type: application/json' \
          -H "AUTH-TOKEN: <your_token>"
+
 
 ### Delete event:
 
     curl http://localhost:3000/api/v1/events/4 -X DELETE \
          -H "AUTH-TOKEN: <your_token>"
 
+    curl http://localhost:3000/api/v1/events/1 -X DELETE \
+         -H "AUTH-TOKEN:  QicvL88QtSay2osSUumjJFDd"
 
+
+## Course (api_v1_courses)
+
+### Create Course
+
+    curl -d '{"title":"test123","description":"Palo santo coloring book ethical knausgaard echo park kickstarter roof party wolf taxidermy occupy seitan kombucha normcore ennui shoreditch."}' http://localhost:3000/api/v1/courses -X POST \
+         -H 'Content-Type: application/json' \
+         -H "AUTH-TOKEN:  <your_token>"
+
+
+### Read Course
+
+    curl http://localhost:3000/api/v1/courses -X GET \
+         -H "AUTH-TOKEN: <your_token>"
+
+
+### Update Course
+
+    curl -d '{"title":"test-abc"}'  http://localhost:3000/api/v1/courses/1 -X PUT \
+         -H 'Content-Type: application/json' \
+         -H "AUTH-TOKEN: <your_token>"
+
+
+### Destroy Course
+
+    curl http://localhost:3000/api/v1/courses/1 -X DELETE \
+         -H "AUTH-TOKEN: <your_token>"
 
 
