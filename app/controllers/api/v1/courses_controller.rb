@@ -1,6 +1,7 @@
 class Api::V1::CoursesController < ApplicationController
   before_action :authenticate_with_token!, only: [:create, :update]
   before_action :find_course, only: [:show, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @courses = Course.all
