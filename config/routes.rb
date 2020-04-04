@@ -19,4 +19,8 @@ Rails.application.routes.draw do
 
   match '/api/v1/(:anything)' => 'application#noop', via: [:options]
 
+  get '*path', to: "application#fallback_index_html", constraints: ->(request) do
+    !request.xhr? && request.format.html?
+  end
+
 end

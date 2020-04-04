@@ -10,7 +10,7 @@ class Api::V1::SessionsController < Devise::SessionsController
       sign_in "user", @user
       render_json "Success", true, {user: @user}, :ok
     else
-      render_json "Error: %s" % [user.errors.full_messages], false, {}, :unauthorized
+      render_json "Error: %s" % [@user.errors.full_messages], false, {}, :unauthorized
     end
   end
 
