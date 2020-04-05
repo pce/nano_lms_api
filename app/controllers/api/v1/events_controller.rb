@@ -1,6 +1,7 @@
 class Api::V1::EventsController < ApplicationController
-  before_action :authenticate_with_token!, only: [:create, :update]
+  before_action :authenticate_with_token! #, only: [:create, :update]
   before_action :find_event, only: [:show, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @events = Event.all

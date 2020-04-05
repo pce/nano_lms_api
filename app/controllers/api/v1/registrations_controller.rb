@@ -1,5 +1,5 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
-
+  before_action :authenticate_with_token! #, only: [:create, :update]
   before_action :ensure_params_exists, only: [:create]
 
   def create

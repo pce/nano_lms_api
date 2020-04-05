@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
       resources :events #, only: [:index, :show]
       resources :courses #, only: [:index, :show]
+      resources :users #, only: [:index, :show]
     end
   end
 
