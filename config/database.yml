@@ -52,3 +52,4 @@ production:
   database: nano_lms_api_production
   username: nano_lms_api
   password: <%= ENV['NANO_LMS_API_DATABASE_PASSWORD'] %>
+  socket: /var/run/mysqld/mysqld.sock

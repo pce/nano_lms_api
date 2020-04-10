@@ -13,6 +13,7 @@ class Api::V1::CoursesController < ApplicationController
   end
 
   def create
+    # puts params.inspect
     @course = Course.new course_params
     @course.title = params[:title]
     @course.description = params[:description]
@@ -26,6 +27,7 @@ class Api::V1::CoursesController < ApplicationController
   end
 
   def update
+    # puts params.inspect
     # if can_update @course.user
     if @course.update course_params
       render_json "Success", true, {course: @course}, :ok

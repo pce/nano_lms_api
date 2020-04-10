@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # todo optimze to one regex
   match '/api/v1/(:anything)' => 'application#noop', via: [:options]
+  match '/api/v1/(:anything)/(:anything)' => 'application#noop', via: [:options]
 
   get '*path', to: "application#fallback_index_html", constraints: ->(request) do
     !request.xhr? && request.format.html?
