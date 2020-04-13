@@ -54,12 +54,27 @@
          -H "AUTH-TOKEN:  <your_token>"
 
 
-### Read Course
+### Read Courses
+
 
     curl http://localhost:3000/api/v1/courses -X GET \
          -H "AUTH-TOKEN: <your_token>"
 
-single course by id:
+with pager:
+
+    curl -s -i http://localhost:3000/api/v1/courses\?page\=1  \
+         -H "AUTH-TOKEN: <your_token>"
+
+   {"data":{
+      "courses":[...],
+      "pager":{
+         "current_page":1,"next_page":null,"prev_page":null,"total_pages":1,"total_count":8
+       }
+     }
+   }
+
+
+### Read Course
 
     curl -s -i http://localhost:3000/api/v1/courses/2 -X GET \
          -H "AUTH-TOKEN: <your_token>"
