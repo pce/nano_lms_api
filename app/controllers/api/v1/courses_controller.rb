@@ -4,8 +4,16 @@ class Api::V1::CoursesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @courses = Course.all
-    render_json "Success", true, {courses: @courses}, :ok
+    if params.has_key?(:page)
+      @courses = Course.page(params[:page]).order('updated_at DESC')
+      render_json "Success", true, {
+        courses: @courses,
+        pager: pagination_dict(@courses)
+      }, :ok
+    else
+      @courses = Course.all.order('updated_at DESC')
+      render_json "Success", true, {courses: @courses}, :ok
+    end
   end
 
   def show
