@@ -59,6 +59,11 @@
     curl http://localhost:3000/api/v1/courses -X GET \
          -H "AUTH-TOKEN: <your_token>"
 
+single course by id:
+
+    curl -s -i http://localhost:3000/api/v1/courses/2 -X GET \
+         -H "AUTH-TOKEN: <your_token>"
+
 
 ### Update Course
 

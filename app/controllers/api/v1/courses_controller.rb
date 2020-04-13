@@ -9,7 +9,7 @@ class Api::V1::CoursesController < ApplicationController
   end
 
   def show
-    render_json "Success", true, {course: @course}, :ok
+    render_json "Success", true, {course: @course, events: @course.events}, :ok
   end
 
   def create
