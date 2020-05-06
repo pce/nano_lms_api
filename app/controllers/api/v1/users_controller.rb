@@ -13,12 +13,19 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-
-    # @user = User.new({email: 'me@example.com', password: 'password', password_confirmation: 'password'})
     @user = User.new user_params
+
+    @user.user_role = true
+
+    # @user.password = "abc234!"
+    # @user.password_confirmation = "abc234!"
+
+    # raise @user.inspect
     # @user.skip_confirmation!
     # @user.confirm!
-    # @user.created_by = current_user.id
+
+    # TODO
+    # # @user.created_by = current_user.id
     if @user.save
       render_json "Success", true, {user: @user}, :ok
     else
@@ -58,7 +65,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit :email
+    params.require(:user).permit :email, :username, :password, :password_confirmation
   end
 
 
