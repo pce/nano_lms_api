@@ -5,11 +5,11 @@ class Api::V1::CoursesController < ApplicationController
 
   def index
     if params.has_key?(:page)
-      @courses = Course.page(params[:page]).order('updated_at DESC')
-      render_json "Success", true, {
-        courses: @courses,
-        pager: pagination_dict(@courses)
-      }, :ok
+      # @courses = Course.page(params[:page]).order('updated_at DESC')
+      pagy, records = pagy(Course.all)
+      render_json "Sucess", true, {
+          courses: records,
+          pager: pagy_metadata(pagy) }, :ok
     else
       @courses = Course.all.order('updated_at DESC')
       render_json "Success", true, {courses: @courses}, :ok
