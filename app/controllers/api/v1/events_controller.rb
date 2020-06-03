@@ -4,7 +4,7 @@ class Api::V1::EventsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @events = Event.all
+    find_events
     render_json "Success", true, {events: @events}, :ok
   end
 
@@ -49,6 +49,22 @@ class Api::V1::EventsController < ApplicationController
   end
 
   private
+
+
+  def find_events
+    if params.has_key?(:order_by)
+      od = params[:order_direction]  || 'desc'
+      @events = Event.order(params[:order_by] => od)
+    else
+      unless params[:page]
+        # todo optimize calendar (and set paging higher etc.)
+        @events = Event.all
+      else
+        @events = pagy(Event.all)
+      end
+    end
+  end
+
 
   def find_event
     @event = Event.find_by id: params[:id]
