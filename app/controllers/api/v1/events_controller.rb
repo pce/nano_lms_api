@@ -53,7 +53,7 @@ class Api::V1::EventsController < ApplicationController
 
   def find_events
     if params.has_key?(:order_by)
-      od = params[:order_direction]  || 'desc'
+      od = params[:order_dir]  || 'desc'
       @events = Event.order(params[:order_by] => od)
     else
       unless params[:page]

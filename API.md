@@ -29,6 +29,12 @@
     curl http://localhost:3000/api/v1/events -X GET \
          -H "AUTH-TOKEN: <your_token>"
 
+#### order_by and order_direction
+
+    curl "http://localhost:3000/api/v1/events?order_by=start&order_dir=desc" -X GET  -H "AUTH-TOKEN: <your_token>"
+    {"messages":"Success","is_success":true,"data":{"events":[{"id":22,"title":"...","start":"2020-06-22T15:12:00.000Z","end":"2020-06-22T17:00:00.000Z", ...
+
+
 ### Update event:
 
     curl -d '{"start":"2019-09-10 12:00","end":"2019-09-10 13:00","title":"test123a","room":"ABC"}'  http://localhost:3000/api/v1/events/1 -X PUT \
