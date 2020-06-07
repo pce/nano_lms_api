@@ -45,3 +45,5 @@ gem 'simple_token_authentication'
 gem 'cancancan'
 # gem 'will_paginate'
 gem 'pagy' 
+gem 'dotenv-rails'
+
