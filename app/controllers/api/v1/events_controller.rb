@@ -55,6 +55,8 @@ class Api::V1::EventsController < ApplicationController
     if params.has_key?(:order_by)
       od = params[:order_dir]  || 'desc'
       @events = Event.order(params[:order_by] => od)
+      # cumulative
+      @events = @events.where(:course_id => params[:c]) if params[:c].present? && params[:c] != ""
     else
       unless params[:page]
         # todo optimize calendar (and set paging higher etc.)
