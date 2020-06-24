@@ -37,7 +37,7 @@ module NanoLmsApi
     config.action_dispatch.default_headers = {
       'Access-Control-Allow-Origin' => 'http://localhost:3030',
       # 'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Allow-Methods' =>  '*',
+      # 'Access-Control-Allow-Methods' =>  '*',
       'Access-Control-Allow-Methods' => 'POST, PUT, DELETE, GET, OPTIONS',
       'Access-Control-Request-Method' => 'GET, PATCH, PUT, POST, OPTIONS, DELETE',
       'Access-Control-Allow-Headers' => 'auth-token, accept, accept-language, content-language, content-type'
