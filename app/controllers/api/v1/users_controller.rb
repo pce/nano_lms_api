@@ -14,20 +14,10 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.new user_params
-
     @user.user_role = true
 
-    # @user.password = "abc234!"
-    # @user.password_confirmation = "abc234!"
-
-    # raise @user.inspect
-    # @user.skip_confirmation!
-    # @user.confirm!
-
-    # TODO
-    # # @user.created_by = current_user.id
     if @user.save
-      render_json "Success", true, {user: @user}, :ok
+        render_json "Success", true, {user: @user}, :ok
     else
       render_json "Error", true, {}, :unprocessable_entity
     end

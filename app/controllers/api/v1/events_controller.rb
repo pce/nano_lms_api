@@ -61,9 +61,8 @@ class Api::V1::EventsController < ApplicationController
     # cumulative filters
     # course
     @events = @events.where(:course_id => params[:c]) if params[:c].present? && params[:c] != ""
-    # daterange
+    # date-range
     @events = @events.where(:start => params[:start]..params[:end]) if params[:start].present? && params[:end].present?
-    # @events = @events.where(:end => params[:end]) if params[:end].present? && params[:end] != ""
     # pagination
     @events = pagy(@events) if params[:page].present?
   end

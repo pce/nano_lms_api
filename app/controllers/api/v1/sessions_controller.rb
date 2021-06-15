@@ -14,7 +14,7 @@ class Api::V1::SessionsController < Devise::SessionsController
     end
   end
 
-  # sign_out (start session)
+  # sign_out
   def destroy
     sign_out @user
     @user.generate_new_authentication_token
